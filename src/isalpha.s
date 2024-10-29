@@ -1,26 +1,30 @@
+.global ft_isalpha
 #141 == 'a'
 #172 == 'z'
 #101 == 'A'
 #132 == 'Z'
 ft_isalpha:
-	cmp %rdi, $101
+	mov $101, %rax
+	cmp %rdi, %rax
 	jl return_false
 
-	cmp %rdi, $172
+	mov $172, %rax
+	cmp %rdi, %rax
 	jg return_false
 
-	cmp %rdi, $140
+	mov $140, %rax
+	cmp %rdi, %rax
 	jg return_true
 
-	cmp %rdi, $142
+	mov $142, %rax
+	cmp %rdi, %rax
 	jl return_true
 
 	jmp return_false
 
-
 return_false:
-	mov %rax, $0
+	mov $0, %rax
 	ret
 return_true:
-	mov %rax, $1
+	mov $1, %rax
 	ret
