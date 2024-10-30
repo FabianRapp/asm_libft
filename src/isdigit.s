@@ -26,3 +26,4 @@ return_true:
 	mov $1, %rax
 	ret
 
+.section .note.GNU-stack, "", @progbits

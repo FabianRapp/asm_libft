@@ -31,3 +31,5 @@ return_true:
 	xor %rax, %rax
 	mov $1024, %rax
 	ret
+
+.section .note.GNU-stack, "", @progbits

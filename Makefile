@@ -16,9 +16,8 @@ TEST_DIR := tests/
 
 
 SOURCES := \
-		   isalpha.s \
-
-#isdigit.s \
+			isalpha.s \
+			isdigit.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)
@@ -31,7 +30,7 @@ OBJECTS_TESTS := $(SOURCES_TESTS:%.c=%.o)
 
 #************************** build rules *******************************
 
-all: $(NAME) $(NAME_TESTS) so
+all: $(NAME) $(NAME_TESTS)
 
 $(NAME): $(SOURCES) $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
@@ -45,7 +44,6 @@ $(OBJECTS_DIR):
 
 $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.s $(OBJECTS_DIR)
 	$(AS) $(ASFLAGS) -c $< -o $@
-	cp $@ ./
 
 #***************************** tests ***********************************
 
