@@ -28,40 +28,9 @@ do {\
 { \
 	bool	fail = false; \
  \
-	int	c = -500; \
-	while (c <= 500) { \
-		int	expect = fn(c); \
-		int	actual = ft_##fn(c); \
-		if (expect != actual) { \
-			fail = true; \
-			fprintf(stderr, "test fail: " #fn ": for int(%d) / char(%c): " \
-				"expected: %d, actual: %d\n", \
-				c, (char)c, actual, expect); \
-		} \
-		c++; \
-	} \
-	{ \
-		c = INT_MAX; \
-		int	expect = fn(c); \
-		int	actual = ft_##fn(c); \
-		if (expect != actual) { \
-			fail = true; \
-			fprintf(stderr, "test fail: " #fn ": for int(%d) / char(%c): " \
-				"expected: %d, actual: %d\n", \
-				c, (char)c, actual, expect); \
-		} \
-	} \
-	{ \
-		c = INT_MIN; \
-		int	expect = fn(c); \
-		int	actual = ft_##fn(c); \
-		if (expect != actual) { \
-			fail = true; \
-			fprintf(stderr, "test fail: " #fn ": for int(%d) / char(%c): " \
-				"expected: %d, actual: %d\n", \
-				c, (char)c, actual, expect); \
-		} \
-	} \
+	for (int i = EOF; i < 256; i++) { \
+		TEST_CHAR_FN_VAL(fn, i);\
+	}\
 	if (!fail) { \
 		printf(#fn " passed!\n"); \
 	} \
@@ -70,21 +39,8 @@ do {\
 
 
 int main(void) {
-	bool	fail = false;
-
-/*
-	for (int i = EOF; i < 530; i++) {
-		TEST_CHAR_FN_VAL(isalpha, i);
-	}
-	for (int i = EOF; i < 530; i++) {
-		TEST_CHAR_FN_VAL(isdigit, i);
-	}
-*/
-	for (int i = EOF; i < 530; i++) {
-		TEST_CHAR_FN_VAL(isalnum, i);
-	}
-	if (!fail) {
-		printf("passed\n");
-	}
+	TEST_CHAR_FN(isalpha);
+	TEST_CHAR_FN(isdigit);
+	TEST_CHAR_FN(isalnum);
 	return (0);
 }

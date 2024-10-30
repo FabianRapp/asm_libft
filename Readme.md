@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is my introduction to x86_64 assembly by implementing the foundational C functions of `libft`, a key library at [42 School](https://42.fr/). The goal is to replicate some of the basic `libc` functions in 64-bit x86 assembly language, gaining a low-level understanding of computer architecture and assembly programming along the way.
+This project is my introduction to x86_64 assembly by implementing the foundational C functions of `libft`, the first project at a [42 School](https://42.fr/) usually to learn C, now to learn assembly. The goal is to replicate some of the basic `libc` functions in 64-bit x86 assembly language, gaining a low-level understanding of computer architecture and assembly programming along the way.
 
 ## Goals
 
@@ -18,7 +18,7 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 ## Ascii char manipulation
 - [x] `ft_isalpha`: Check if a character is alphabetic.
 - [x] `ft_isdigit`: Check if a character is a digit.
-- [ ] `ft_isalnum`: Check if a character is alphanumeric.
+- [x] `ft_isalnum`: Check if a character is alphanumeric.
 - [ ] `ft_isascii`: Check if a character is an ASCII character.
 - [ ] `ft_isprint`: Check if a character is printable.
 - [ ] `ft_toupper`: Convert a character to uppercase.
