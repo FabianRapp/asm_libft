@@ -4,23 +4,86 @@
 #include "../libft.h"
 #include <stdbool.h>
 
-void	test_isalpha(void) {
-	bool	fail = false;
+//expects 'bool fail' to exist
+#ifndef TEST_CHAR_FN_VAL
+# define TEST_CHAR_FN_VAL(fn, val) \
+do {\
+	int	expect = !!fn((unsigned char)val); \
+	int	actual = !!ft_##fn((unsigned char)val); \
+	if (expect != actual) { \
+		fprintf(stderr, "Fail: " #fn ": for value %d (0x%08x)"\
+			": expected: %d actual: %d\n", val, val, expect, actual); \
+		fail = true; \
+	} \
+	else if (0) { \
+		fprintf(stderr, "Pass: " #fn ": for value %d (0x%08x)"\
+			": expected: %d actual: %d\n", val, val, expect, actual); \
+	} \
+} while(0)
+#endif // TEST_CHAR_FN_VAL
 
-	for (int c = 0; c <= 500; c++) {
-		if (isalpha(c) != ft_isalpha(c)) {
-			fail = true;
-			fprintf(stderr, "test fail: isalpha: for int(%d) / char(%c): "
-				"expected: %d, actual: %d\n",
-				c, (char)c, isalpha(c), ft_isalpha(c));
-		}
-	}
-	if (!fail) {
-		printf("ft_isalpha passed!\n");
-	}
+#ifndef TEST_CHAR_FN
+# include <limits.h>
+# define TEST_CHAR_FN(fn) \
+{ \
+	bool	fail = false; \
+ \
+	int	c = -500; \
+	while (c <= 500) { \
+		int	expect = fn(c); \
+		int	actual = ft_##fn(c); \
+		if (expect != actual) { \
+			fail = true; \
+			fprintf(stderr, "test fail: " #fn ": for int(%d) / char(%c): " \
+				"expected: %d, actual: %d\n", \
+				c, (char)c, actual, expect); \
+		} \
+		c++; \
+	} \
+	{ \
+		c = INT_MAX; \
+		int	expect = fn(c); \
+		int	actual = ft_##fn(c); \
+		if (expect != actual) { \
+			fail = true; \
+			fprintf(stderr, "test fail: " #fn ": for int(%d) / char(%c): " \
+				"expected: %d, actual: %d\n", \
+				c, (char)c, actual, expect); \
+		} \
+	} \
+	{ \
+		c = INT_MIN; \
+		int	expect = fn(c); \
+		int	actual = ft_##fn(c); \
+		if (expect != actual) { \
+			fail = true; \
+			fprintf(stderr, "test fail: " #fn ": for int(%d) / char(%c): " \
+				"expected: %d, actual: %d\n", \
+				c, (char)c, actual, expect); \
+		} \
+	} \
+	if (!fail) { \
+		printf(#fn " passed!\n"); \
+	} \
 }
+#endif //TEST_CHAR_FN
+
 
 int main(void) {
-	test_isalpha();
+	//TEST_CHAR_FN(isalpha)
+	//int	actual;
+	//int	expect;
+	//int	nb;
+	//nb = -395;
+	//expect = isalpha(nb);
+	//actual = ft_isalpha(nb);
+	bool	fail = false;
+	for (int i = 0; i < 530; i++) {
+		TEST_CHAR_FN_VAL(isalpha, i);
+	}
+	TEST_CHAR_FN_VAL(isalpha, EOF);
+	if (!fail) {
+		printf("passed\n");
+	}
 	return (0);
 }

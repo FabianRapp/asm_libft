@@ -4,3 +4,5 @@ libft.a
 dotests
 compile_commands.json
 *.o
+*.so
+*.a
