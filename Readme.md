@@ -26,7 +26,7 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 
 ## Memory and String Manipulation
 
-- [ ] `ft_strlen`: Calculate the length of a string.
+- [x] `ft_strlen`: Calculate the length of a string.
 - [ ] `ft_strcpy`: Copy a string from source to destination.
 - [ ] `ft_strcmp`: Compare two strings lexicographically.
 - [ ] `ft_strdup`: Duplicate a string by allocating memory for it.

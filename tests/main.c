@@ -6,6 +6,7 @@
 # include <string.h>
 
 char *test_strs[] = {
+    "!",
     "Hello, world!",
     "OpenAI GPT",
     "C programming is fun",
@@ -67,6 +68,7 @@ char *test_strs[] = {
 
 
 int main(void) {
+	//printf("sizeof size_t: %lu\n", sizeof(size_t));
 	TEST_CHAR_FN(isalpha);
 	TEST_CHAR_FN(isdigit);
 	TEST_CHAR_FN(isalnum);
