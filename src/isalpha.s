@@ -27,7 +27,7 @@ return_false:
 	ret
 
 return_true:
-	mov $1024, %rax
+	movl $1024, %eax
 	ret
 
 .section .note.GNU-stack, "", @progbits

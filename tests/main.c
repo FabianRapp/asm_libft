@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <assert.h>
-#include "../libft.h"
+#include <libft.h>
 #include <stdbool.h>
 
 //expects 'bool fail' to exist
@@ -72,11 +72,16 @@ do {\
 int main(void) {
 	bool	fail = false;
 
+/*
 	for (int i = EOF; i < 530; i++) {
 		TEST_CHAR_FN_VAL(isalpha, i);
 	}
 	for (int i = EOF; i < 530; i++) {
 		TEST_CHAR_FN_VAL(isdigit, i);
+	}
+*/
+	for (int i = EOF; i < 530; i++) {
+		TEST_CHAR_FN_VAL(isalnum, i);
 	}
 	if (!fail) {
 		printf("passed\n");

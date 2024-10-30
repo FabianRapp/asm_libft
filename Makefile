@@ -1,10 +1,12 @@
 CC := gcc
 AS := gcc
 
-FSAN := address
+INCLUDE := -I./include
 
-ASFLAGS := -Wall -O0 -fPIC -fsanitize=$(FSAN) -g
-CFLAGS := -Wall -O0 -fPIC -fsanitize=$(FSAN) -g
+FSAN := address
+ASFLAGS := -Wall -O0 -fPIC -fsanitize=$(FSAN) -g $(INCLUDE)
+CFLAGS := -Wall -O0 -fPIC -fsanitize=$(FSAN) -g $(INCLUDE)
+
 
 NAME := libft.a
 NAME_SO := libft.so
@@ -18,6 +20,7 @@ TEST_DIR := tests/
 SOURCES := \
 			isalpha.s \
 			isdigit.s \
+			isalnum.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)

@@ -11,9 +11,8 @@ ft_isdigit:
 #else if c - '9' > 0 return false
 	cmpl $_CHAR_9, %edi
 	ja return_false
-#else
-#	return true;
-	mov $1, %eax
+#else return true
+	movl $1, %eax
 	ret
 
 return_false:
