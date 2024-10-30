@@ -24,11 +24,9 @@ ft_isalpha:
 
 return_false:
 	xor %rax, %rax
-	mov $0, %rax
 	ret
 
 return_true:
-	xor %rax, %rax
 	mov $1024, %rax
 	ret
 

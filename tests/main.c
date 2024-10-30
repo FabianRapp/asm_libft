@@ -70,18 +70,14 @@ do {\
 
 
 int main(void) {
-	//TEST_CHAR_FN(isalpha)
-	//int	actual;
-	//int	expect;
-	//int	nb;
-	//nb = -395;
-	//expect = isalpha(nb);
-	//actual = ft_isalpha(nb);
 	bool	fail = false;
-	for (int i = 0; i < 530; i++) {
+
+	for (int i = EOF; i < 530; i++) {
 		TEST_CHAR_FN_VAL(isalpha, i);
 	}
-	TEST_CHAR_FN_VAL(isalpha, EOF);
+	for (int i = EOF; i < 530; i++) {
+		TEST_CHAR_FN_VAL(isdigit, i);
+	}
 	if (!fail) {
 		printf("passed\n");
 	}
