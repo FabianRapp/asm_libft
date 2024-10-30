@@ -3,8 +3,9 @@ AS := clang
 
 FSAN := address
 
-ASFLAGS := -Wall -fsanitize=$(FSAN)
-CFLAGS := -Wall -fsanitize=$(FSAN)
+ASFLAGS := -Wall
+CFLAGS := -Wall
+#-fsanitize=$(FSAN)
 
 NAME := libft.a
 NAME_TESTS := dotests
@@ -30,7 +31,6 @@ all: $(NAME) $(NAME_TESTS)
 
 $(NAME): $(SOURCES) $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-
 #*************************** libft.a ***********************************
 
 $(OBJECTS_DIR):
@@ -42,7 +42,7 @@ $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.s $(OBJECTS_DIR)
 #***************************** tests ***********************************
 
 $(NAME_TESTS): $(NAME) $(TEST_SOURCES) $(OBJECTS_TESTS)
-	$(CC) $(CLFAGS) $(OBJECTS_TESTS) $(NAME) -o $(NAME_TESTS)
+	$(CC) $(CFLAGS) $(OBJECTS_TESTS) $(NAME) -o $(NAME_TESTS)
 
 $(TEST_DIR)%.o: $(TEST_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -50,10 +50,10 @@ $(TEST_DIR)%.o: $(TEST_DIR)%.c
 #****************************** utils **********************************
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(OBJECTS_TESTS)
 
-fclean:
+fclean: clean
 	rm -rf $(OBJECT_DIR)
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_TESTS)
 
 re: fclean all

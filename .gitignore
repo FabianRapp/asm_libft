@@ -1,3 +1,6 @@
 objs
 a.out
 libft.a
+dotests
+compile_commands.json
+*.o

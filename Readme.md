@@ -6,17 +6,17 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 
 ## Goals
 
-- **Learn x86 Assembly**: Develop proficiency in 64-bit x86 Assembly through practical application.
+- **Learn x86 Assembly**: Develop proficiency in 64-bit x86 Assembly (AT&T syntax) through practical application.
 - **Implement Standard C Functions**: Recreate core `libft` functions, originally implemented in C, using assembly.
 - **Understand System Calls and Memory Management**: Gain insights into system-level operations, function calls, and memory handling in assembly.
-  
+- **Have better understanding of ELF to continue implementing a debugger with ptrace.
 
 ### Functions
 [ ]: todo \
 [x]: implemented
 
 ## Ascii char manipulation
-- [ ] `ft_isalpha`: Check if a character is alphabetic.
+- [x] `ft_isalpha`: Check if a character is alphabetic.
 - [ ] `ft_isdigit`: Check if a character is a digit.
 - [ ] `ft_isalnum`: Check if a character is alphanumeric.
 - [ ] `ft_isascii`: Check if a character is an ASCII character.
