@@ -21,6 +21,7 @@ SOURCES := \
 			isalpha.s \
 			isdigit.s \
 			isalnum.s \
+			isascii.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)

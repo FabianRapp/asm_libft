@@ -42,5 +42,6 @@ int main(void) {
 	TEST_CHAR_FN(isalpha);
 	TEST_CHAR_FN(isdigit);
 	TEST_CHAR_FN(isalnum);
+	TEST_CHAR_FN(isascii);
 	return (0);
 }
