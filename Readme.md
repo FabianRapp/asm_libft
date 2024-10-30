@@ -20,7 +20,7 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 - [x] `ft_isdigit`: Check if a character is a digit.
 - [x] `ft_isalnum`: Check if a character is alphanumeric.
 - [x] `ft_isascii`: Check if a character is an ASCII character.
-- [ ] `ft_isprint`: Check if a character is printable.
+- [x] `ft_isprint`: Check if a character is printable.
 - [ ] `ft_toupper`: Convert a character to uppercase.
 - [ ] `ft_tolower`: Convert a character to lowercase.
 

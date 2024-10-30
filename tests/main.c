@@ -3,39 +3,67 @@
 #include <assert.h>
 #include <libft.h>
 #include <stdbool.h>
+# include <string.h>
 
-//expects 'bool fail' to exist
-#ifndef TEST_CHAR_FN_VAL
-# define TEST_CHAR_FN_VAL(fn, val) \
-do {\
-	int	expect = !!fn((unsigned char)val); \
-	int	actual = !!ft_##fn((unsigned char)val); \
-	if (expect != actual) { \
-		fprintf(stderr, "Fail: " #fn ": for value %d (0x%08x)"\
-			": expected: %d actual: %d\n", val, val, expect, actual); \
+char *test_strs[] = {
+    "Hello, world!",
+    "OpenAI GPT",
+    "C programming is fun",
+    "Sample string",
+    "Another example",
+    "Yet another string",
+    "Test case 1",
+    "Test case 2",
+    "Random text",
+    "",
+    "End of array",
+};
+
+#ifndef CMP_RESULT
+# define CMP_RESULT(fn, expect, actual, i, printf_type) \
+	if ((expect) != (actual)) { \
+	fprintf(stderr, "Fail: " #fn ": for value %" #printf_type " (0x%08x)"\
+			": expected: %" #printf_type " actual: %" #printf_type "\n", \
+			i, (unsigned)i, expect, actual); \
 		fail = true; \
 	} \
 	else if (0) { \
-		fprintf(stderr, "Pass: " #fn ": for value %d (0x%08x)"\
-			": expected: %d actual: %d\n", val, val, expect, actual); \
-	} \
-} while(0)
-#endif // TEST_CHAR_FN_VAL
+		fprintf(stderr, "Pass: " #fn ": for value %" #printf_type " (0x%08x)"\
+			": expected: %" #printf_type " actual: %" #printf_type "\n", \
+				i, (unsigned)i, expect, actual); \
+	}
+#endif // CMP_RESULT
 
 #ifndef TEST_CHAR_FN
-# include <limits.h>
 # define TEST_CHAR_FN(fn) \
 { \
 	bool	fail = false; \
  \
 	for (int i = EOF; i < 256; i++) { \
-		TEST_CHAR_FN_VAL(fn, i);\
+		int	expect = !!fn((unsigned char)i); \
+		int	actual = !!ft_##fn((unsigned char)i); \
+		CMP_RESULT(fn, expect, actual, i, d); \
 	}\
 	if (!fail) { \
 		printf(#fn " passed!\n"); \
 	} \
 }
 #endif //TEST_CHAR_FN
+
+#ifndef TEST_1STR_FN
+# define TEST_1STR_FN(fn) \
+{ \
+	bool	fail = false; \
+	for (size_t i = 0; i < sizeof test_strs / sizeof test_strs[0]; i++) { \
+		size_t	expect = fn(test_strs[i]); \
+		size_t	actual = ft_##fn(test_strs[i]); \
+		CMP_RESULT(fn, expect, actual, i, lu); \
+	} \
+	if (!fail) { \
+		printf(#fn " passed!\n"); \
+	} \
+}
+#endif // TEST_1STR_FN
 
 
 int main(void) {
@@ -44,5 +72,6 @@ int main(void) {
 	TEST_CHAR_FN(isalnum);
 	TEST_CHAR_FN(isascii);
 	TEST_CHAR_FN(isprint);
+	TEST_1STR_FN(strlen);
 	return (0);
 }

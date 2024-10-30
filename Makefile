@@ -23,6 +23,7 @@ SOURCES := \
 			isalnum.s \
 			isascii.s \
 			isprint.s \
+			strlen.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)
