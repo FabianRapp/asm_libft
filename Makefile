@@ -1,11 +1,11 @@
-CC := gcc
-AS := gcc
+CC := clang
+AS := clang
 
 INCLUDE := -I./include
 
 FSAN := address
-ASFLAGS := -Wall -O0 -fPIC -fsanitize=$(FSAN) -g $(INCLUDE)
-CFLAGS := -Wall -O0 -fPIC -fsanitize=$(FSAN) -g $(INCLUDE)
+ASFLAGS := -Wall -Wextra -g3 -O0 -fPIC -g $(INCLUDE)
+CFLAGS := -Wall -Wextra -g3 -O0 -fPIC -fsanitize=$(FSAN) -g $(INCLUDE)
 
 
 NAME := libft.a
@@ -25,6 +25,7 @@ SOURCES := \
 			isprint.s \
 			strlen.s \
 			bzero.s \
+			memset.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)

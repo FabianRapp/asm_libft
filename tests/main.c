@@ -4,6 +4,7 @@
 #include <libft.h>
 #include <stdbool.h>
 #include <string.h>
+#include <limits.h>
 
 char *test_strs[] = {
     "!",
@@ -84,31 +85,39 @@ char *test_strs[] = {
 }
 #endif // CMP_BUF_RESULTS
 
+
 #ifndef TEST_BUF_FN
-# define TEST_BUF_FN(fn, fn_argc) \
+# define TEST_BUF_FN(fn, ...) \
 { \
-	bool	fail = false;\
-	switch (fn_argc) { \
-		case(2): { \
-			for (size_t i = 0; i < sizeof test_strs / sizeof test_strs[0]; i++) { \
-				size_t	arg2 = strlen(test_strs[i]); \
-				void	*expect = strdup(test_strs[i]); \
-				fn(expect, arg2); \
-				void	*actual = strdup(test_strs[i]); \
-				ft_##fn(actual, arg2); \
-				CMP_BUF_RESULTS(fn, expect, actual, arg2); \
-				free(expect); \
-				free(actual); \
-			} \
-			break ; \
-		}\
-		default: assert(0);\
-	}\
-	if (!fail) {\
-		printf(#fn " passed!\n"); \
+	for (size_t i = 0; i < sizeof test_strs / sizeof test_strs[0]; i++) { \
+		char	*cur = test_strs[i]; \
+		void	*expect = strdup(cur); \
+		fn(expect, __VA_ARGS__); \
+		void	*actual = strdup(cur); \
+		ft_##fn(actual, __VA_ARGS__); \
+		CMP_BUF_RESULTS(fn, expect, actual, strlen(cur)); \
+		free(expect); \
+		free(actual); \
 	}\
 }
 #endif //TEST_1BUF_FN
+
+void	test_memset(void) {
+	bool	fail = false;
+	for (int i = -300; i <= 300; i++ ) {
+		TEST_BUF_FN(memset, i, strlen(cur));
+	}
+	TEST_BUF_FN(memset, INT_MAX, strlen(cur));
+	TEST_BUF_FN(memset, INT_MIN, strlen(cur));
+	for (size_t i = 0; i < sizeof test_strs / sizeof test_strs[0]; i++) {
+		char	*test = strdup(test_strs[i]);
+		if (ft_memset(test, i, strlen(test_strs[i])) != test)
+			fail = true;
+		free(test);
+	}
+	if (!fail)
+		printf("memset passed\n");
+}
 
 int main(void) {
 	//printf("sizeof size_t: %lu\n", sizeof(size_t));
@@ -118,6 +127,11 @@ int main(void) {
 	TEST_CHAR_FN(isascii);
 	TEST_CHAR_FN(isprint);
 	TEST_1STR_FN(strlen);
-	TEST_BUF_FN(bzero, 2);
+
+	bool	fail = false;
+	TEST_BUF_FN(bzero, strlen(cur));
+	if (!fail)
+		printf("bzero passed\n");
+	test_memset();
 	return (0);
 }

@@ -12,7 +12,7 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 - **ELF understanding**:: Have better understanding of ELF to continue implementing a debugger with ptrace.
 
 ### Functions
-- [ ]: todo \
+- [ ]: todo
 - [x]: implemented
 
 ## Ascii char manipulation
@@ -33,7 +33,7 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 - [ ] `ft_write`: Write data to a file descriptor (using the system call).
 - [ ] `ft_read`: Read data from a file descriptor (using the system call).
 - [ ] `ft_strlen`: Calculate the length of a string.
-- [ ] `ft_memset`: Fill a block of memory with a specific value.
+- [x] `ft_memset`: Fill a block of memory with a specific value.
 - [x] `ft_bzero`: Set a block of memory to zero.
 - [ ] `ft_memcpy`: Copy memory from one location to another.
 - [ ] `ft_memmove`: Copy memory, with handling for overlapping regions.
