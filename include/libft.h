@@ -12,4 +12,5 @@ size_t	ft_strlen(const char *str);
 void	ft_bzero(void *buf, size_t n);
 void	*ft_memset(void *buf, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 #endif // LIBFT_H

@@ -4,7 +4,7 @@ AS := clang
 INCLUDE := -I./include
 
 FSAN := address
-ASFLAGS := -Wall -Wextra -g3 -O0 -fPIC -g $(INCLUDE)
+ASFLAGS := -Wall -Wextra -g3 -O3 -fPIC -g $(INCLUDE)
 CFLAGS := -Wall -Wextra -g3 -O0 -fPIC -fsanitize=$(FSAN) -g $(INCLUDE)
 
 
@@ -27,6 +27,7 @@ SOURCES := \
 			bzero.s \
 			memset.s \
 			memcpy.s \
+			memmove.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)

@@ -274,6 +274,7 @@ void	test_memset(void) {
 void	test_memcpy(void) {
 	bool	fail = false;
 	TEST_BUF_FN(memcpy, cur, strlen(cur));
+	TEST_BUF_FN(memmove, cur, strlen(cur));
 	for (size_t i = 0; i < sizeof test_strs / sizeof test_strs[0]; i++) {
 		char	*test = calloc(strlen(test_strs[i]) + 1, 1);
 		if (ft_memcpy(test, test_strs[i], strlen(test_strs[i]) + 1) != test) {
@@ -283,7 +284,7 @@ void	test_memcpy(void) {
 		free(test);
 	}
 	if (!fail)
-		printf("memcpy passed\n");
+		printf("memcpy/memmove passed\n");
 }
 
 int main(void) {

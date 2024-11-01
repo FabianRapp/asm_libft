@@ -3,7 +3,7 @@
 ## Overview
 
 This project is my introduction to x86_64 assembly by implementing the foundational C functions of `libft`, the first project at a [42 School](https://42.fr/) usually to learn C, now to learn assembly. The goal is to replicate some of the basic `libc` functions in 64-bit x86 assembly language, gaining a low-level understanding of computer architecture and assembly programming along the way.
-
+For the most part I will keep the implementations basic, but for a few I want to dive deep to optimize.
 ## Goals
 
 - **Learn x86 Assembly**: Develop proficiency in 64-bit x86 Assembly (AT&T syntax) through practical application.
@@ -36,7 +36,7 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 - [x] `ft_memset`: Fill a block of memory with a specific value.
 - [x] `ft_bzero`: Set a block of memory to zero.
 - [x] `ft_memcpy`: Copy memory from one location to another.
-- [ ] `ft_memmove`: Copy memory, with handling for overlapping regions.
+- [x] `ft_memmove`: Copy memory, with handling for overlapping regions.
 - [ ] `ft_strlcpy`: Copy a string with a maximum buffer size.
 - [ ] `ft_strlcat`: Append a string with a maximum buffer size.
 - [ ] `ft_strchr`: Locate the first occurrence of a character in a string.

@@ -1,10 +1,10 @@
-#void	*ft_memcpy(void *dest, const void *src, size_t n);
-.global ft_memcpy
+#void	*ft_memmove(void *dest, const void *src, size_t n);
+.global ft_memmove
 
 //TODO: alignment at the beginning
 
 
-ft_memcpy:
+ft_memmove:
 	movq	%rdi, %rax	 # return val
 	
 	movb	%dl, %cl
@@ -53,14 +53,5 @@ return:
 	ret
 
 .section .note.GNU-stack, "", @progbits
-
-#this appertly segfaults sometimes?:
-//less_than_8:
-//	rep		movsb		//rep: repeat movsb %rcx times
-						//moves: moves (%rsi) to (%rdi) and increases
-						//	rsi/rdi by 1 (b(yte) size)
-						//(no other regs possible)
-						// todo: movsb is makred as legacy:
-						// would it be better not to use it?
 
 
