@@ -3,8 +3,6 @@
 
 //TODO: alignment at the beginning
 
-//TODO: currently dosnt work for closly overly buffers longer than 7 bytes
-
 ft_memmove:
 //init
 	movq	%rdi, %rax	 # return val
