@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <libft.h>
 #include <stdbool.h>
-# include <string.h>
+#include <string.h>
 
 char *test_strs[] = {
     "!",
@@ -20,15 +20,20 @@ char *test_strs[] = {
     "End of array",
 };
 
+#ifndef PRINT_PASS
+# define PRINT_PASS false
+#endif //PRINT_PASS
+
+
 #ifndef CMP_RESULT
 # define CMP_RESULT(fn, expect, actual, i, printf_type) \
 	if ((expect) != (actual)) { \
-	fprintf(stderr, "Fail: " #fn ": for value %" #printf_type " (0x%08x)"\
+		fprintf(stderr, "Fail: " #fn ": for value %" #printf_type " (0x%08x)"\
 			": expected: %" #printf_type " actual: %" #printf_type "\n", \
 			i, (unsigned)i, expect, actual); \
 		fail = true; \
 	} \
-	else if (0) { \
+	else if (PRINT_PASS) { \
 		fprintf(stderr, "Pass: " #fn ": for value %" #printf_type " (0x%08x)"\
 			": expected: %" #printf_type " actual: %" #printf_type "\n", \
 				i, (unsigned)i, expect, actual); \
@@ -66,6 +71,44 @@ char *test_strs[] = {
 }
 #endif // TEST_1STR_FN
 
+#ifndef CMP_BUF_RESULTS
+# define CMP_BUF_RESULTS(fn, expect, actual, size) \
+{\
+	if (memcmp(expect, actual, size)) { \
+		fprintf(stderr, "Fail: " #fn "\n"); \
+		fail = true; \
+	} \
+	else if (PRINT_PASS) { \
+		fprintf(stderr, "Pass: " #fn "\n"); \
+	} \
+}
+#endif // CMP_BUF_RESULTS
+
+#ifndef TEST_BUF_FN
+# define TEST_BUF_FN(fn, fn_argc) \
+{ \
+	bool	fail = false;\
+	switch (fn_argc) { \
+		case(2): { \
+			for (size_t i = 0; i < sizeof test_strs / sizeof test_strs[0]; i++) { \
+				size_t	arg2 = strlen(test_strs[i]); \
+				void	*expect = strdup(test_strs[i]); \
+				fn(expect, arg2); \
+				void	*actual = strdup(test_strs[i]); \
+				ft_##fn(actual, arg2); \
+				CMP_BUF_RESULTS(fn, expect, actual, arg2); \
+				free(expect); \
+				free(actual); \
+			} \
+			break ; \
+		}\
+		default: assert(0);\
+	}\
+	if (!fail) {\
+		printf(#fn " passed!\n"); \
+	}\
+}
+#endif //TEST_1BUF_FN
 
 int main(void) {
 	//printf("sizeof size_t: %lu\n", sizeof(size_t));
@@ -75,5 +118,6 @@ int main(void) {
 	TEST_CHAR_FN(isascii);
 	TEST_CHAR_FN(isprint);
 	TEST_1STR_FN(strlen);
+	TEST_BUF_FN(bzero, 2);
 	return (0);
 }

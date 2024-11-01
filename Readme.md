@@ -9,11 +9,11 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 - **Learn x86 Assembly**: Develop proficiency in 64-bit x86 Assembly (AT&T syntax) through practical application.
 - **Implement Standard C Functions**: Recreate core `libft` functions, originally implemented in C, using assembly.
 - **Understand System Calls and Memory Management**: Gain insights into system-level operations, function calls, and memory handling in assembly.
-- **Have better understanding of ELF to continue implementing a debugger with ptrace.
+- **ELF understanding**:: Have better understanding of ELF to continue implementing a debugger with ptrace.
 
 ### Functions
-[ ]: todo \
-[x]: implemented
+- [ ]: todo \
+- [x]: implemented
 
 ## Ascii char manipulation
 - [x] `ft_isalpha`: Check if a character is alphabetic.
@@ -34,7 +34,7 @@ This project is my introduction to x86_64 assembly by implementing the foundatio
 - [ ] `ft_read`: Read data from a file descriptor (using the system call).
 - [ ] `ft_strlen`: Calculate the length of a string.
 - [ ] `ft_memset`: Fill a block of memory with a specific value.
-- [ ] `ft_bzero`: Set a block of memory to zero.
+- [x] `ft_bzero`: Set a block of memory to zero.
 - [ ] `ft_memcpy`: Copy memory from one location to another.
 - [ ] `ft_memmove`: Copy memory, with handling for overlapping regions.
 - [ ] `ft_strlcpy`: Copy a string with a maximum buffer size.
