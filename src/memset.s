@@ -3,7 +3,7 @@
 .global ft_memset
 
 ft_memset:
-	mov		%rdi, %rax #setup return value and never change it
+	movq		%rdi, %rax #setup return value and never change it
 
 	cmp		$0, %rdx
 	je		return

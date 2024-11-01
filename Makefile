@@ -26,6 +26,7 @@ SOURCES := \
 			strlen.s \
 			bzero.s \
 			memset.s \
+			memcpy.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)
