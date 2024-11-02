@@ -1,7 +1,7 @@
 #void	*ft_memmove(void *dest, const void *src, size_t n);
 .global ft_memmove
 
-//TODO: alignment at the beginning
+//TODO: alignment for simd operations
 
 ft_memmove:
 //init

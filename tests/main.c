@@ -208,7 +208,8 @@ char *test_strs[] = {
 
 bool	can_print_return(char *str_fn) {
 	//add more when needed for debugging
-	if (!strcmp(str_fn, "memcpy")) {
+	if (!strcmp(str_fn, "memcpy") || !strcmp(str_fn, "strlcpy")
+		|| !strcmp(str_fn, "memmove")) {
 		return (true);
 	}
 	return (false);
@@ -302,5 +303,9 @@ int main(void) {
 		printf("bzero passed\n");
 	test_memset();
 	test_memcpy();
+	fail = false;
+	TEST_BUF_FN(strlcpy, cur, strlen(cur));
+	if (!fail)
+		printf("strlcpy passed\n");
 	return (0);
 }

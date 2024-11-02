@@ -37,7 +37,7 @@ For the most part I will keep the implementations basic, but for a few I want to
 - [x] `ft_bzero`: Set a block of memory to zero.
 - [x] `ft_memcpy`: Copy memory from one location to another.
 - [x] `ft_memmove`: Copy memory, with handling for overlapping regions.
-- [ ] `ft_strlcpy`: Copy a string with a maximum buffer size.
+- [x] `ft_strlcpy`: Copy a string with a maximum buffer size.
 - [ ] `ft_strlcat`: Append a string with a maximum buffer size.
 - [ ] `ft_strchr`: Locate the first occurrence of a character in a string.
 - [ ] `ft_strrchr`: Locate the last occurrence of a character in a string.

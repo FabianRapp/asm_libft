@@ -28,6 +28,7 @@ SOURCES := \
 			memset.s \
 			memcpy.s \
 			memmove.s \
+			strlcpy.s \
 
 SOURCES := $(SOURCES:%=$(SOURCES_DIR)%)
 OBJECTS := $(SOURCES:src/%.s=$(OBJECTS_DIR)%.o)
