@@ -21,7 +21,7 @@ For the most part I will keep the implementations basic, but for a few I want to
 - [x] `ft_isalnum`: Check if a character is alphanumeric.
 - [x] `ft_isascii`: Check if a character is an ASCII character.
 - [x] `ft_isprint`: Check if a character is printable.
-- [ ] `ft_toupper`: Convert a character to uppercase.
+- [x] `ft_toupper`: Convert a character to uppercase.
 - [ ] `ft_tolower`: Convert a character to lowercase.
 
 ## Memory and String Manipulation

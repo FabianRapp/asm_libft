@@ -21,6 +21,7 @@ SOURCES := \
 			isalpha.s \
 			isdigit.s \
 			isalnum.s \
+			toupper.s \
 			isascii.s \
 			isprint.s \
 			strlen.s \

@@ -305,6 +305,7 @@ int main(void) {
 	test_memcpy();
 	fail = false;
 	TEST_BUF_FN(strlcpy, cur, strlen(cur));
+	printf("ft_toupper('c'): %c\n", ft_toupper('c'));
 	if (!fail)
 		printf("strlcpy passed\n");
 	return (0);
